@@ -1,0 +1,3 @@
+/home/allen/Dev/C++/SFML/build/CMakeFiles/main.dir
+/home/allen/Dev/C++/SFML/build/CMakeFiles/edit_cache.dir
+/home/allen/Dev/C++/SFML/build/CMakeFiles/rebuild_cache.dir

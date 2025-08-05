@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/allen/Dev/C++/SFML/build",
+  "command": "/usr/bin/g++   -g -std=gnu++20 -o CMakeFiles/main.dir/main.cpp.o -c /home/allen/Dev/C++/SFML/main.cpp",
+  "file": "/home/allen/Dev/C++/SFML/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.o"
+}
+]
