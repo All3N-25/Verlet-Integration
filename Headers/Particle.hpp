@@ -3,11 +3,13 @@
 
 
 class Particle{
-    sf::Vector2f position_current = {400, 300};
-    sf::Vector2f position_previous = {400, 300};
-    sf::Vector2f Accelation;
 
     public:
+
+    sf::Vector2f position_current = {200, 500};
+    sf::Vector2f position_previous = {200, 500};
+    sf::Vector2f Accelation;
+
         void updatePosition(float dt){
             const sf::Vector2f velocity = position_current - position_previous;
 

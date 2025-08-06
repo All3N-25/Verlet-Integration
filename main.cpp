@@ -7,15 +7,25 @@
 
 int main() 
 {
-    float radius = 50.0f;
+    float radius = 10.0f;
     sf::CircleShape circle(radius);
     circle.setOrigin(radius, radius);
 
-    uint16_t WindowWidth = 800;
-    uint16_t WindowHeight = 600;
 
-    uint16_t windowPosX = (2560 - 800) / 2;
-    uint16_t windowPosY = (1440 - 600) / 2;
+    float constraintRadius = 400.0f;
+    sf::CircleShape ConstraintCircle(constraintRadius);
+    ConstraintCircle.setPosition(sf::Vector2f(1000/2.0f, 1000/2.0f));
+
+    ConstraintCircle.setOutlineThickness(2.0f);
+    ConstraintCircle.setOrigin(constraintRadius, constraintRadius);
+    ConstraintCircle.setFillColor(sf::Color::Transparent);
+    ConstraintCircle.setOutlineColor(sf::Color::White);
+
+    uint16_t WindowWidth = 1000;
+    uint16_t WindowHeight = 1000;
+
+    uint16_t windowPosX = (2560 - WindowWidth) / 2;
+    uint16_t windowPosY = (1440 - WindowHeight) / 2;
 
     sf::RenderWindow window(sf::VideoMode({WindowWidth, WindowHeight}), "My window", sf::Style::Close);
     window.setPosition(sf::Vector2i(windowPosX, windowPosY));
@@ -28,7 +38,6 @@ int main()
     particle.Accelerate({0.0f, 9.8f});
 
     solver.addParticles(particle);
-
     
     // run the program as long as the window is open
     while (window.isOpen()){
@@ -45,7 +54,9 @@ int main()
 
         solver.update(dt);
 
-        window.clear(sf::Color(0, 0, 0, 255));
+        window.clear(sf::Color(80, 80, 80, 255));
+        
+        window.draw(ConstraintCircle);
 
         for(const auto& particle : solver.getParticles()){
             circle.setPosition(particle.getPosition());
