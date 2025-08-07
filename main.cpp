@@ -19,7 +19,7 @@ int main()
     window.setPosition(sf::Vector2i(windowPosX, windowPosY));
     window.setFramerateLimit(60);
 
-    float radius = 10.0f;
+    float radius = 5.0f;
     sf::CircleShape circle(radius);
     circle.setOrigin(radius, radius);
 
@@ -35,7 +35,7 @@ int main()
                 window.close();
             }
         } 
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
             sf::Vector2i mousePosInt = sf::Mouse::getPosition(window);
             sf::Vector2f mousePosFloat = window.mapPixelToCoords(mousePosInt);
 
@@ -49,8 +49,8 @@ int main()
         }
 
         //delta time
-        float dt = 1.0f / 60.0f;
-        solver.update(dt);
+        //float dt = 1.0f / 60.0f;
+        solver.update();
 
         window.clear(sf::Color(80, 80, 80, 255));
         
@@ -59,6 +59,8 @@ int main()
         //Render the particles
         for(const auto& particle : solver.getParticles()){
             circle.setPosition(particle.getPosition());
+            circle.setOutlineColor(sf::Color::Black);
+            circle.setOutlineThickness(1.0f);
             circle.setFillColor(sf::Color::Red);
             window.draw(circle);
         }

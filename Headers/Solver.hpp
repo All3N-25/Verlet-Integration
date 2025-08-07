@@ -5,8 +5,14 @@
 #include <cmath>
 
 class Solver{
-    
+
+    std::vector<Particle> particles;
     sf::Vector2f gravity = {0.0f, 1000.0f};
+    sf::Vector2f m_constraint_center = {500.0f , 500.0f};
+    float m_constraint_radius = 400.0f;
+
+    float                  step_dt          = 1.0f / 60;
+    int                    sub_steps        = 8;
 
     public:
 
@@ -18,12 +24,16 @@ class Solver{
         const std::vector<Particle>& getParticles() const {
             return particles;
         }
-        
-        void update(float dt){
+
+        void update(){
+
+            float substep_dt = step_dt / sub_steps;
+            for (int i = 0; i < sub_steps; i++) {
             applyGravity();
             Collisions();
             applyConstraint();
-            updatePositions(dt);
+            updatePositions(substep_dt);
+            }
 
         }
 
@@ -41,28 +51,16 @@ class Solver{
 
         //Container
         void applyConstraint(){
-            
-            const sf::Vector2 position{500.0f, 500.0f};                 //Position of the Circle Constraint
-            const float radius = 400.0f;                                //Radius of the Circle Constraint
-            
+
             for(auto& obj : particles){
-
-                const sf::Vector2 to_obj = obj.getPosition() - position;
-                const float dist = std::sqrt(to_obj.x * to_obj.x + to_obj.y * to_obj.y);
-
-                if (dist > (radius - obj.getRadius())){
-                    const sf::Vector2f normal = to_obj / dist;
-                    const sf::Vector2f newPos = position + normal * (radius - obj.getRadius());
-
-                    // Reflect and dampen the velocity
-                    sf::Vector2f velocity = obj.getPosition() - obj.getPreviousPos();
-                    sf::Vector2f reflectedVelocity = velocity - 2.0f * (velocity.x * normal.x + velocity.y * normal.y) * normal;
-
-                    reflectedVelocity *= 0.75f; // damping factor
-
-                    obj.setPosition(newPos);
-                    obj.setPreviousPos(newPos - reflectedVelocity);
+                const sf::Vector2f v = m_constraint_center - obj.getPosition();
+                const float dist = sqrt(v.x * v.x + v.y * v.y);
+                if (dist > (m_constraint_radius - obj.getRadius())){
+                    const sf::Vector2f n = v / dist;
+                    sf::Vector2f pos = m_constraint_center - n * (m_constraint_radius - obj.getRadius());
+                    obj.setPosition(pos);
                 }
+
             }
             
         }
@@ -98,9 +96,4 @@ class Solver{
                 }
              }
         }
-
-    private:
-        
-        std::vector<Particle> particles;
-
     };
