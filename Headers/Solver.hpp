@@ -52,8 +52,16 @@ class Solver{
 
                 if (dist > (radius - obj.getRadius())){
                     const sf::Vector2f normal = to_obj / dist;
-                    sf::Vector2f currentPos = position + normal * (dist - obj.getRadius());
-                    obj.setPosition(currentPos);
+                    const sf::Vector2f newPos = position + normal * (radius - obj.getRadius());
+
+                    // Reflect and dampen the velocity
+                    sf::Vector2f velocity = obj.getPosition() - obj.getPreviousPos();
+                    sf::Vector2f reflectedVelocity = velocity - 2.0f * (velocity.x * normal.x + velocity.y * normal.y) * normal;
+
+                    reflectedVelocity *= 0.75f; // damping factor
+
+                    obj.setPosition(newPos);
+                    obj.setPreviousPos(newPos - reflectedVelocity);
                 }
             }
             
