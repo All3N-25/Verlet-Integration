@@ -4,12 +4,14 @@
 
 class Particle{
 
-    public:
-
-    sf::Vector2f position_current = {200, 500};
-    sf::Vector2f position_previous = {200, 500};
+    private:
+    sf::Vector2f position_current;
+    sf::Vector2f position_previous;
     sf::Vector2f Accelation;
+    float Radius;
 
+    public:
+    
         void updatePosition(float dt){
             const sf::Vector2f velocity = position_current - position_previous;
 
@@ -26,8 +28,26 @@ class Particle{
             Accelation += acc;
         }
 
+        void setStartPos(sf::Vector2f pos){
+            position_current = pos;
+            position_previous = pos;
+        }
+
+        void setPosition(sf::Vector2f Position){
+            position_current = Position;
+        }
+
         sf::Vector2f getPosition() const {
             return position_current;
+        }
+
+
+        void setRadius(float Rad){
+            Radius = Rad;
+        }
+
+        float getRadius() const{
+            return Radius;
         }
         
 };

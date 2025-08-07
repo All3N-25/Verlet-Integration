@@ -21,6 +21,7 @@ class Solver{
         
         void update(float dt){
             applyGravity();
+            Collisions();
             applyConstraint();
             updatePositions(dt);
 
@@ -46,15 +47,48 @@ class Solver{
             
             for(auto& obj : particles){
 
-                const sf::Vector2 to_obj = obj.position_current - position;
+                const sf::Vector2 to_obj = obj.getPosition() - position;
                 const float dist = std::sqrt(to_obj.x * to_obj.x + to_obj.y * to_obj.y);
 
-                if (dist > (radius - 10.0f)){
+                if (dist > (radius - obj.getRadius())){
                     const sf::Vector2f normal = to_obj / dist;
-                    obj.position_current = position + normal * (dist - 10.0f);
+                    sf::Vector2f currentPos = position + normal * (dist - obj.getRadius());
+                    obj.setPosition(currentPos);
                 }
             }
             
+        }
+
+        void Collisions(){
+            const float    response_coef = 0.75f;
+            const uint32_t particle_count = particles.size();
+
+            for(uint64_t i{0}; i < particle_count; i++){
+                Particle& object_1 = particles[i];
+
+                // Iterate on object involved in new collision pairs
+                for(uint64_t k{i + 1}; k < particle_count; k++){
+                    Particle& object_2 = particles[k];
+                    const sf::Vector2f v = object_1.getPosition() - object_2.getPosition(); 
+                    const float dist2 = v.x * v.x + v.y * v.y;
+                    const float min_dist = object_1.getRadius() + object_2.getRadius();
+
+                    //Check Overlapping
+                    if(dist2 < (min_dist * min_dist)){
+                        const float dist = sqrt(dist2);
+                        const sf::Vector2f n = v / dist;
+                        const float mass_ratio_1 = object_1.getRadius() / (object_1.getRadius() + object_2.getRadius());
+                        const float mass_ratio_2 = object_2.getRadius() / (object_1.getRadius() + object_2.getRadius());
+                        const float delta =  0.5f * response_coef * (dist - min_dist);
+
+                        //Update Positions
+                        sf::Vector2f pos1 = (object_1.getPosition() - n * mass_ratio_2 * delta);
+                        sf::Vector2f pos2 = (object_2.getPosition() + n * mass_ratio_2 * delta);
+                        object_1.setPosition(pos1);
+                        object_2.setPosition(pos2);
+                    }
+                }
+             }
         }
 
     private:

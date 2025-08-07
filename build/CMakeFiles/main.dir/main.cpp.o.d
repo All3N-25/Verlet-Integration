@@ -239,8 +239,7 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
- /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/13/iostream \
- /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
+ /usr/include/SFML/Graphics/VertexBuffer.hpp \
  /home/allen/Dev/C++/SFML/Headers/Solver.hpp \
  /home/allen/Dev/C++/SFML/Headers/Particle.hpp /usr/include/c++/13/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \

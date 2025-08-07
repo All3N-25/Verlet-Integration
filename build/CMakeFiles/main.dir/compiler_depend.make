@@ -110,7 +110,6 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
   /usr/include/c++/13/bits/hash_bytes.h \
   /usr/include/c++/13/bits/invoke.h \
   /usr/include/c++/13/bits/ios_base.h \
-  /usr/include/c++/13/bits/istream.tcc \
   /usr/include/c++/13/bits/iterator_concepts.h \
   /usr/include/c++/13/bits/locale_classes.h \
   /usr/include/c++/13/bits/locale_classes.tcc \
@@ -192,8 +191,6 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
-  /usr/include/c++/13/iostream \
-  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
   /usr/include/c++/13/locale \
@@ -436,10 +433,6 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
-
-/usr/include/x86_64-linux-gnu/bits/locale.h:
-
 /usr/include/c++/13/bits/ostream.tcc:
 
 /usr/include/c++/13/numbers:
@@ -449,6 +442,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
 /usr/include/c++/13/bits/locale_facets_nonio.h:
 
 /usr/include/c++/13/bits/locale_facets.tcc:
+
+/usr/include/c++/13/bits/locale_conv.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
@@ -475,10 +470,6 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/c++/13/bits/exception_ptr.h:
-
-/usr/include/c++/13/bits/locale_conv.h:
-
-/usr/include/c++/13/bits/istream.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
@@ -626,6 +617,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
 
 /usr/include/c++/13/bits/hash_bytes.h:
 
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
 /usr/include/SFML/System/Sleep.hpp:
 
 /usr/include/features.h:
@@ -669,6 +662,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
 /usr/include/c++/13/bits/locale_facets.h:
 
 /usr/include/SFML/System/MemoryInputStream.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
 
 /usr/include/SFML/Graphics/Rect.hpp:
 
@@ -772,8 +767,6 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
-/usr/include/c++/13/istream:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 /usr/include/SFML/Graphics/PrimitiveType.hpp:
@@ -801,8 +794,6 @@ CMakeFiles/main.dir/main.cpp.o: /home/allen/Dev/C++/SFML/main.cpp \
 /usr/include/c++/13/cstdio:
 
 /usr/include/SFML/System/Vector2.hpp:
-
-/usr/include/c++/13/iostream:
 
 /usr/include/c++/13/bits/postypes.h:
 
